@@ -9,14 +9,17 @@ namespace Asteroids
     public class Asteroid : MonoBehaviour
     {
         [SerializeField] private ScriptableEventInt _onAsteroidDestroyed;
-        
-        [Header("Config:")]
-        [SerializeField] private float _minForce;
-        [SerializeField] private float _maxForce;
-        [SerializeField] private float _minSize;
-        [SerializeField] private float _maxSize;
-        [SerializeField] private float _minTorque;
-        [SerializeField] private float _maxTorque;
+
+        //[Header("Config:")]
+        //[SerializeField] private float _minForce;
+        //[SerializeField] private float _maxForce;
+        //[SerializeField] private float _minSize;
+        //[SerializeField] private float _maxSize;
+        //[SerializeField] private float _minTorque;
+        //[SerializeField] private float _maxTorque;
+        [HideInInspector] public float Force;
+        [HideInInspector] public float Size;
+        [HideInInspector] public float Torque;
 
         [Header("References:")]
         [SerializeField] private Transform _shape;
@@ -25,7 +28,7 @@ namespace Asteroids
         private Vector3 _direction;
         private int _instanceId;
 
-        private void Start()
+        public void InitAsteroid()
         {
             _rigidbody = GetComponent<Rigidbody2D>();
             _instanceId = GetInstanceID();
@@ -81,15 +84,14 @@ namespace Asteroids
 
         private void AddForce()
         {
-            var force = Random.Range(_minForce, _maxForce);
+            var force = Force;
             _rigidbody.AddForce( _direction * force, ForceMode2D.Impulse);
         }
 
         private void AddTorque()
         {
-            var torque = Random.Range(_minTorque, _maxTorque);
+            var torque = Torque;
             var roll = Random.Range(0, 2);
-
             if (roll == 0)
                 torque = -torque;
             
@@ -98,7 +100,7 @@ namespace Asteroids
 
         private void SetSize()
         {
-            var size = Random.Range(_minSize, _maxSize);
+            var size = Size;
             _shape.localScale = new Vector3(size, size, 0f);
         }
     }

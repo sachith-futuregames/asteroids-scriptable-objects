@@ -240,6 +240,10 @@ MonoBehaviour:
   _maxSpawnTime: 4
   _minAmount: 1
   _maxAmount: 2
+  AsteroidConfigs:
+  - {fileID: 11400000, guid: 7267ca02ac2641f4d8bfe7e2e1231ba4, type: 2}
+  - {fileID: 11400000, guid: fc057deb410079642ac3acd252e1b211, type: 2}
+  - {fileID: 11400000, guid: 76e3be63911f0c341a44612941deac74, type: 2}
 --- !u!4 &1867257717
 Transform:
   m_ObjectHideFlags: 0

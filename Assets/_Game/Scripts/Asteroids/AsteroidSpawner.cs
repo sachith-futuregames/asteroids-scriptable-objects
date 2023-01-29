@@ -11,6 +11,7 @@ namespace Asteroids
         [SerializeField] private float _maxSpawnTime;
         [SerializeField] private int _minAmount;
         [SerializeField] private int _maxAmount;
+        public AsteroidConfig[] AsteroidConfigs;
         
         private float _timer;
         private float _nextSpawnTime;
@@ -61,12 +62,15 @@ namespace Asteroids
         private void Spawn()
         {
             var amount = Random.Range(_minAmount, _maxAmount + 1);
-            
+            AsteroidConfig Selected = AsteroidConfigs[Random.Range(0, AsteroidConfigs.Length)];
+
             for (var i = 0; i < amount; i++)
             {
                 var location = GetSpawnLocation();
                 var position = GetStartPosition(location);
-                Instantiate(_asteroidPrefab, position, Quaternion.identity);
+                Asteroid _temp = Instantiate(_asteroidPrefab, position, Quaternion.identity);
+                Selected.SetData(ref _temp);
+                _temp.InitAsteroid();
             }
         }
 
