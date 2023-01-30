@@ -10,7 +10,7 @@ namespace Asteroids
     {
         [SerializeField] private ScriptableEventInt _onAsteroidDestroyed;
 
-        //[Header("Config:")]
+        [Header("Config:")]
         //[SerializeField] private float _minForce;
         //[SerializeField] private float _maxForce;
         //[SerializeField] private float _minSize;
